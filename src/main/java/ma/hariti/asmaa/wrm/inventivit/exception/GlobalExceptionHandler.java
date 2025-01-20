@@ -3,7 +3,7 @@ package ma.hariti.asmaa.wrm.inventivit.exception;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.extern.slf4j.Slf4j;
-import ma.hariti.asmaa.wrm.hahntest.dto.ApiResponseDTO;
+import ma.hariti.asmaa.wrm.inventivit.dto.ApiResponseDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
