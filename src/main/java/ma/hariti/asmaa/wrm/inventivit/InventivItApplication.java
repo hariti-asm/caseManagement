@@ -8,6 +8,7 @@ public class InventivItApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(InventivItApplication.class, args);
+        System.out.println("hello there");
 	}
 
 }

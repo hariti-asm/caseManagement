@@ -1,7 +1,7 @@
 package ma.hariti.asmaa.wrm.inventivit.entity;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,7 +24,6 @@ public class Case {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long caseId;
 
-    @NotNull(message = "Creation date cannot be null")
     @CreationTimestamp
     @Column(name = "creation_date", nullable = false, updatable = false)
     private LocalDateTime creationDate;
