@@ -1,0 +1,33 @@
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+
+image: maven:17-eclipse-temurin
+
+cache:
+  paths:
+    - .m2/repository
+
+stages:
+  - test
+  - build
+
+test:
+  stage: test
+  services:
+    - mysql:latest
+  variables:
+    MYSQL_DATABASE: ${MYSQL_DATABASE}
+    MYSQL_USER: ${MYSQL_USER}
+    MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    SPRING_DATASOURCE_URL: "jdbc:mysql://mysql:3306/${MYSQL_DATABASE}"
+  script:
+    - mvn test
+
+build:
+  stage: build
+  script:
+    - mvn clean package -DskipTests
+  artifacts:
+    paths:
+      - target/*.jar
