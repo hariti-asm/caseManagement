@@ -60,4 +60,4 @@ jobs:
 
       - name: Build Docker images
         if: success()
-        run: docker-compose build
+        run: docker compose build
