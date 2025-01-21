@@ -21,7 +21,6 @@ jobs:
     runs-on: ubuntu-latest
 
     services:
-      # Add MySQL service container for integration tests
       mysql:
         image: mysql:latest
         env:
