@@ -1,14 +1,26 @@
+server:
+  port: ${SERVER_PORT}
+
 spring:
   datasource:
-    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-    username: sa
-    password:
-    driver-class-name: org.h2.Driver
+    url: jdbc:mysql://${MYSQL_HOST}:${MYSQL_PORT}/test_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: ${MYSQL_USER}
+    password: ${MYSQL_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
     show-sql: true
-  test:
-    database:
-      replace: none
+  application:
+    name: ${APP_NAME}
+
+logging:
+  level:
+    org.hibernate.SQL: ${LOG_LEVEL_HIBERNATE_SQL}
+    org.hibernate.type.descriptor.sql.BasicBinder: ${LOG_LEVEL_HIBERNATE_TYPE}
+    ma.hariti.asmaa.wrm.inventivit: ${LOG_LEVEL_APPLICATION}
